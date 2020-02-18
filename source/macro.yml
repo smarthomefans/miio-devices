@@ -1,0 +1,10 @@
+string_on_off:
+  - type: "string"
+    range:
+      - on
+      - off
+number_0_100:
+  - type: "number"
+    range:
+      - min: 0
+      - max: 100
