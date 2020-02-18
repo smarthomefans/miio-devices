@@ -1,0 +1,64 @@
+type: "waterheater"
+vendor: "viomi"
+version: "e1"
+
+commands:
+  - set_power:
+      description: "Turn water heater on/off"
+      parameters:
+        - number_on_off
+  - set_mode:
+      description: "Turn quick bath mode on/off"
+      parameters:
+        - number_on_off
+  - set_temp:
+      description: "Set heater target temperature"
+      parameters:
+        - type: "number"
+          range:
+            - min: 30
+            - max: 80
+#  - set_appoint:
+#      description: "Set working appointment time"
+
+properties:
+  - washStatus:
+      description: "DON’T KNOW"
+      results:
+        - type: "number"
+  - velocity:
+      description: "DON’T KNOW"
+      results:
+        - type: "number"
+  - waterTemp:
+      description: "Current water temperature"
+      results:
+        - type: "number"
+  - targetTemp:
+      description: "Heater target temperature"
+      results:
+        - type: "number"
+  - errStatus:
+      description: "Error code"
+      results:
+        - type: "number"
+  - hotWater:
+      description: "Hot water percentage"
+      results:
+        - number_0_100
+  - modeType:
+      description: "Working mode type"
+      results:
+        - type: "number"
+  - appointStart:
+      description: "Appointment start time in hour"
+      results:
+        - type: "number"
+  - appointEnd:
+      description: "Appointment end time in hour"
+      results:
+        - type: "number"
+  - needClean:
+      description: "Device need clean"
+      results:
+        - number_on_off
