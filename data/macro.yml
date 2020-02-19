@@ -9,6 +9,7 @@ number_on_off:
     range:
       - 0
       - 1
+
 number_0_100:
   - type: "number"
     range:
