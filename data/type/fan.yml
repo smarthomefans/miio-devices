@@ -1,103 +1,103 @@
 type: "fan"
 commands:
-  - set_power:
-      description: "Set power on/off"
-      parameters:
-        - string_on_off
-  - set_child_lock:
-      description: "Set child lock on/off"
-      parameters:
-        - string_on_off
-  - set_buzzer:
-      description: "Set buzzer on/off"
-      parameters:
-        - string_on_off
-  - set_led_b:
-      description: "Set led brightness"
-      parameters:
-        - type: "number"
-          range:
-            - min: 0
-            - max: 2
-  - set_angle:
-      description: "Set the oscillation angle"
-      parameters:
-        - type: "number"
-          range:
-            - min: 0
-            - max: 120
-  - set_natural_level:
-      description: "Set natural level"
-      parameters:
-        - number_0_100
-  - set_speed_level:
-      description: "Set speed level"
-      parameters:
-        - number_0_100
-  - set_angle_enable:
-      description: "Set oscillate on/off"
-      parameters:
-        - string_on_off
-  - set_poweroff_time:
-      description: "Set delay off seconds"
-      parameters:
-        - type: "number"
-          range:
-            - min: 1
+  set_power:
+    description: "Set power on/off"
+    parameters:
+      - string_on_off
+  set_child_lock:
+    description: "Set child lock on/off"
+    parameters:
+      - string_on_off
+  set_buzzer:
+    description: "Set buzzer on/off"
+    parameters:
+      - string_on_off
+  set_led_b:
+    description: "Set led brightness"
+    parameters:
+      - type: "number"
+        range:
+          - min: 0
+          - max: 2
+  set_angle:
+    description: "Set the oscillation angle"
+    parameters:
+      - type: "number"
+        range:
+          - min: 0
+          - max: 120
+  set_natural_level:
+    description: "Set natural level"
+    parameters:
+      - number_0_100
+  set_speed_level:
+    description: "Set speed level"
+    parameters:
+      - number_0_100
+  set_angle_enable:
+    description: "Set oscillate on/off"
+    parameters:
+      - string_on_off
+  set_poweroff_time:
+    description: "Set delay off seconds"
+    parameters:
+      - type: "number"
+        range:
+          - min: 1
 properties:
-  - power:
-      description: "Current device power state"
-      results:
-        - string_on_off
-  - child_lock:
-      description: "Current child lock state"
-      results:
-        - string_on_off
-  - buzzer:
-      description: "Current buzzer state"
-      results:
-        - string_on_off
-  - led_b:
-      description: "LED brightness"
-      results:
-        - type: "number"
-          range:
-            - min: 0
-            - max: 2
-  - angle:
-      description: "Current angle"
-      results:
-        - type: "number"
-          range:
-            - min: 0
-            - max: 120
-  - natural_level:
-      description: "Current natural level"
-      results:
-        - number_0_100
-  - speed_level:
-      description: "Current speed level"
-      results:
-        - number_0_100
-  - angle_enable:
-      description: "Current oscillation state"
-      results:
-        - string_on_off
-  - poweroff_time:
-      description: "Countdown until turning off in seconds"
-      results:
-        - type: "number"
-          range:
-            - min: 1
-  - speed:
-      description: "Current fan speed"
-      results:
-        - type: "number"
-  - ac_power:
-      description: "Powered by AC"
-      results:
-        - string_on_off
-  - use_time:
-      description: "How long the device has been active in seconds"
-      results:
-        - type: "number"
+  power:
+    description: "Current device power state"
+    results:
+      - string_on_off
+  child_lock:
+    description: "Current child lock state"
+    results:
+      - string_on_off
+  buzzer:
+    description: "Current buzzer state"
+    results:
+      - string_on_off
+  led_b:
+    description: "LED brightness"
+    results:
+      - type: "number"
+        range:
+          - min: 0
+          - max: 2
+  angle:
+    description: "Current angle"
+    results:
+      - type: "number"
+        range:
+          - min: 0
+          - max: 120
+  natural_level:
+    description: "Current natural level"
+    results:
+      - number_0_100
+  speed_level:
+    description: "Current speed level"
+    results:
+      - number_0_100
+  angle_enable:
+    description: "Current oscillation state"
+    results:
+      - string_on_off
+  poweroff_time:
+    description: "Countdown until turning off in seconds"
+    results:
+      - type: "number"
+        range:
+          - min: 1
+  speed:
+    description: "Current fan speed"
+    results:
+      - type: "number"
+  ac_power:
+    description: "Powered by AC"
+    results:
+      - string_on_off
+  use_time:
+    description: "How long the device has been active in seconds"
+    results:
+      - type: "number"

@@ -1,24 +1,25 @@
 type: "fan"
 vendor: "zhimi"
 version: "v3"
+
 properties:
-  - humidity:
-      description: "Current humidity"
-      results:
-        - type: "number"
-  - temp_dec:
-      description: "Current temperature. Need divided by 10"
-      results:
-        - type: "number"
-  - battery:
-      description: "Current battery level"
-      results:
-        - number_0_100
-  - bat_charge:
-      description: "State of the battery charger"
-      results:
-        - string_on_off
-  - button_pressed:
-      description: "Last pressed button"
-      results:
-        - type: "string"
+  humidity:
+    description: "Current humidity"
+    results:
+      - type: "number"
+  temp_dec:
+    description: "Current temperature. Need divided by 10"
+    results:
+      - type: "number"
+  battery:
+    description: "Current battery level"
+    results:
+      - number_0_100
+  bat_charge:
+    description: "State of the battery charger"
+    results:
+      - string_on_off
+  button_pressed:
+    description: "Last pressed button"
+    results:
+      - type: "string"

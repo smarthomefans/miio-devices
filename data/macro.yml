@@ -1,17 +1,17 @@
 string_on_off:
-  - type: "string"
-    range:
-      - on
-      - off
+  type: "string"
+  range:
+    - on
+    - off
 
 number_on_off:
-  - type: "number"
-    range:
-      - 0
-      - 1
+  type: "number"
+  range:
+    - 0
+    - 1
 
 number_0_100:
-  - type: "number"
-    range:
-      - min: 0
-      - max: 100
+  type: "number"
+  range:
+    - min: 0
+    - max: 100
