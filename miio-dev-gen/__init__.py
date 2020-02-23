@@ -1,6 +1,7 @@
 import os
 import yaml
 import json
+from string import Template
 
 DATA_ROOT_DIR = 'data'
 TYPE_DIR = 'type'
@@ -11,6 +12,15 @@ COMMAND_KEY = 'commands'
 PROPERTY_KEY = 'properties'
 PARAMETER_KEY = 'parameters'
 RESULT_KEY = 'results'
+
+OUTPUT_DIR = 'output'
+OUTPUT_NODEJS_DIR = 'nodejs'
+OUTPUT_NODEJS_FILE_NAME = 'index.js'
+
+NODEJS_TEMPLATE = Template('\
+    var Devices = ${devices};\
+    module.exports = Devices;\
+')
 
 class Devices(object):
     def __init__(self, root_dir):
@@ -161,13 +171,23 @@ class Devices(object):
     def dump_macro(self):
         print(json.dumps(self._macro, indent=4))
 
-    def dump_devices(self):
-        print(json.dumps(self._devices, indent=4))
+    def dump_devices(self, to_nodejs: bool):
+        if to_nodejs:
+            nodejs_path = os.path.join(os.path.join(os.getcwd(), OUTPUT_DIR), OUTPUT_NODEJS_DIR)
+            nodejs_file = os.path.join(nodejs_path, OUTPUT_NODEJS_FILE_NAME)
+            if not os.path.isdir(nodejs_path):
+                os.mkdir(nodejs_path);
+            if os.path.isfile(nodejs_file):
+                os.remove(nodejs_file)
+            with open(nodejs_file, 'a') as f:
+                f.write(NODEJS_TEMPLATE.substitute(devices=json.dumps(self._devices)))
+        else:
+            print(json.dumps(self._devices, indent=4))
 
 def main():
     devices = Devices(os.path.join(os.getcwd(), DATA_ROOT_DIR))
 
-    devices.dump_devices()
+    devices.dump_devices(to_nodejs = True)
 
 
 if __name__ == "__main__":
