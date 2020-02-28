@@ -12,6 +12,8 @@ COMMAND_KEY = 'commands'
 PROPERTY_KEY = 'properties'
 PARAMETER_KEY = 'parameters'
 RESULT_KEY = 'results'
+VENDOR_DEVICE_KEY = 'vendors'
+VENDOR_VERSION_DEVICE_KEY = 'devices'
 
 OUTPUT_DIR = 'output'
 OUTPUT_NODEJS_DIR = 'nodejs'
@@ -66,6 +68,7 @@ class Devices(object):
                     self._devices[type_name] = {}
                     self._devices[type_name][COMMAND_KEY] = {}
                     self._devices[type_name][PROPERTY_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY] = {}
 
                 if COMMAND_KEY in type_raw:
                     self._devices[type_name][COMMAND_KEY] = {
@@ -91,28 +94,30 @@ class Devices(object):
                     self._devices[type_name] = {}
                     self._devices[type_name][COMMAND_KEY] = {}
                     self._devices[type_name][PROPERTY_KEY] = {}
-                if vendor_name not in self._devices[type_name]:
-                    self._devices[type_name][vendor_name] = {}
-                    self._devices[type_name][vendor_name][COMMAND_KEY] = {}
-                    self._devices[type_name][vendor_name][PROPERTY_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY] = {}
+                if vendor_name not in self._devices[type_name][VENDOR_DEVICE_KEY]:
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY] = {}
                 # inherit type
-                self._devices[type_name][vendor_name][COMMAND_KEY] = {
-                    **self._devices[type_name][vendor_name][COMMAND_KEY],
+                self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY] = {
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY],
                     **self._devices[type_name][COMMAND_KEY]
                 }
-                self._devices[type_name][vendor_name][PROPERTY_KEY] = {
-                    **self._devices[type_name][vendor_name][PROPERTY_KEY],
+                self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY] = {
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY],
                     **self._devices[type_name][PROPERTY_KEY]
                 }
                 # override use file
                 if COMMAND_KEY in vendor_type_raw:
-                    self._devices[type_name][vendor_name][COMMAND_KEY] = {
-                        **self._devices[type_name][vendor_name][COMMAND_KEY],
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY] = {
+                        **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY],
                         **vendor_type_raw[COMMAND_KEY]
                     }
                 if PROPERTY_KEY in vendor_type_raw:
-                    self._devices[type_name][vendor_name][PROPERTY_KEY] = {
-                        **self._devices[type_name][vendor_name][PROPERTY_KEY],
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY] = {
+                        **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY],
                         **vendor_type_raw[PROPERTY_KEY]
                     }
 
@@ -130,41 +135,43 @@ class Devices(object):
                     self._devices[type_name] = {}
                     self._devices[type_name][COMMAND_KEY] = {}
                     self._devices[type_name][PROPERTY_KEY] = {}
-                if vendor_name not in self._devices[type_name]:
-                    self._devices[type_name][vendor_name] = {}
-                    self._devices[type_name][vendor_name][COMMAND_KEY] = {}
-                    self._devices[type_name][vendor_name][PROPERTY_KEY] = {}
-                if version_name not in self._devices[type_name][vendor_name]:
-                    self._devices[type_name][vendor_name][version_name] = {}
-                    self._devices[type_name][vendor_name][version_name][COMMAND_KEY] = {}
-                    self._devices[type_name][vendor_name][version_name][PROPERTY_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY] = {}
+                if vendor_name not in self._devices[type_name][VENDOR_DEVICE_KEY]:
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY] = {}
+                if version_name not in self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY]:
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY] = {}
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY] = {}
                 # inherit type
-                self._devices[type_name][vendor_name][version_name][COMMAND_KEY] = {
-                    **self._devices[type_name][vendor_name][version_name][COMMAND_KEY],
+                self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY] = {
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY],
                     **self._devices[type_name][COMMAND_KEY]
                 }
-                self._devices[type_name][vendor_name][version_name][PROPERTY_KEY] = {
-                    **self._devices[type_name][vendor_name][version_name][PROPERTY_KEY],
+                self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY] = {
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY],
                     **self._devices[type_name][PROPERTY_KEY]
                 }
                 # override use vendor_type
-                self._devices[type_name][vendor_name][version_name][COMMAND_KEY] = {
-                    **self._devices[type_name][vendor_name][version_name][COMMAND_KEY],
-                    **self._devices[type_name][vendor_name][COMMAND_KEY]
+                self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY] = {
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY],
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][COMMAND_KEY]
                 }
-                self._devices[type_name][vendor_name][version_name][PROPERTY_KEY] = {
-                    **self._devices[type_name][vendor_name][version_name][PROPERTY_KEY],
-                    **self._devices[type_name][vendor_name][PROPERTY_KEY]
+                self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY] = {
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY],
+                    **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][PROPERTY_KEY]
                 }
                 # override use file
                 if COMMAND_KEY in vendor_type_version_raw:
-                    self._devices[type_name][vendor_name][version_name][COMMAND_KEY] = {
-                        **self._devices[type_name][vendor_name][version_name][COMMAND_KEY],
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY] = {
+                        **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][COMMAND_KEY],
                         **vendor_type_version_raw[COMMAND_KEY]
                     }
                 if PROPERTY_KEY in vendor_type_version_raw:
-                    self._devices[type_name][vendor_name][version_name][PROPERTY_KEY] = {
-                        **self._devices[type_name][vendor_name][version_name][PROPERTY_KEY],
+                    self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY] = {
+                        **self._devices[type_name][VENDOR_DEVICE_KEY][vendor_name][VENDOR_VERSION_DEVICE_KEY][version_name][PROPERTY_KEY],
                         **vendor_type_version_raw[PROPERTY_KEY]
                     }
 
