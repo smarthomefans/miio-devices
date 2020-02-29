@@ -36,5 +36,9 @@ declare module "miio-dev" {
         vendors: Record<string, VendorDevice>;
     }
 
-    export type Devices = Record<string, TypeDevice>;
+    interface AllDevices {
+        [propName: string]: TypeDevice;
+    }
+
+    export var Devices: AllDevices;
 }
