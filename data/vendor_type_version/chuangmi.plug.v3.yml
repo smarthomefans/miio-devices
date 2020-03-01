@@ -1,0 +1,13 @@
+type: "plug"
+vendor: "chuangmi"
+version: "v3"
+commands:
+  set_wifi_led:
+    description: "Set the WiFi led on/off"
+    parameters:
+      - string_on_off
+properties:
+  wifi_led:
+    description: "Current device WiFi LED state"
+    results:
+      - string_on_off

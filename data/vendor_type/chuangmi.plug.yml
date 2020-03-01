@@ -1,0 +1,32 @@
+type: "plug"
+vendor: "chuangmi"
+commands:
+  set_on:
+    description: "Set power on"
+    parameters:
+      - type: "none"
+  set_off:
+    description: "Set power off"
+    parameters:
+      - type: "none"
+  set_usb_on:
+    description: "Set USB power on"
+    parameters:
+      - type: "none"
+  set_usb_off:
+    description: "Set USB power off"
+    parameters:
+      - type: "none"
+properties:
+  on:
+    description: "True if device is on"
+    results:
+      - type: "boolean"
+  usb_on:
+    description: "True if device USB power is on"
+    results:
+      - type: "boolean"
+  get_power:
+    description: "Get plug power"
+    results:
+      - type: "number"
